@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendor Registration Form</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/21a81ba6b6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+<main class="main">
+<h1 class="title fs-3 fw-bold mb-4 mt-4">Vendor Services Form</h1>
+
+
+<form class="mb-4" action="/" id="loginForm">
+
+
+  <div class="create-account-container mb-4">
+    <h2 class="contacts-title fs-3 fw-bold">Create Account:</h2>
+
+    <div class="company-signup-group input-group mb-4 shrink mt-4">
+      <span class="envelope input-group-text"><i alt="envelope icon" class="fa-solid fa-envelope"></i></span>
+      <label for="email" hidden>Enter Email</label>
+      <input maxlength="30" class="required form-control email" name="email" id="email" type="text" placeholder="Enter Email (Username)"/>          
+    </div>
+
+  <div class="company-signup-group input-group mb-4 shrink">
+    <span class="lock input-group-text"><i alt="lock icon" class="fa-solid fa-lock"></i></i></span>
+    <label for="password" hidden>Create Password</label>
+    <input maxlength="20" class="required form-control password" name="password" id="password" type="password" placeholder="Create Password"/>          
+  </div>
+
+  <div class="company-signup-group input-group shrink">
+    <span class="lock input-group-text"><i alt="lock-icon" class="fa-solid fa-lock"></i></i></span>
+    <label for="password2" hidden>Confirm Password</label>
+    <input maxlength="20" class="required form-control password2" id="password2" name="password2" type="password" placeholder="Confirm Password"/>          
+  </div>
+
+  <div class="alert password-alert mt-4 hidden"></div>
+</div>
+
+<div class="company-signup-group input-group mb-4 shrink">
+  <span class="calendar input-group-text"><i alt="calendar icon" class="fa-solid fa-calendar-days"></i></i></span>
+  <label for="signup" hidden>Sign up Date</label>
+  <input maxlength="8" class="required form-control signup" id="signup" name="sign-up-date" type="text" placeholder="Signup Date"/>          
+</div>
+
+<div class="company-name-group input-group mb-4 shrink">
+    <span class="company input-group-text"><i alt="building icon" class="fa-solid fa-building"></i></span>
+    <label for="company-name" hidden>Company Name</label>
+    <input maxlength="30" class="required form-control name" id="company-name" name="company-name" type="text" placeholder="Company Name"/>          
+  </div>
+
+  <div class="company-id-group input-group mb-4 shrink">
+    <span class="input-group-text id-logo"><i alt="id card icon" class="fa-solid fa-id-card"></i></span>
+    <label for="id" hidden>Federal I.D. or Social Security Number</label>
+    <input maxlength="15" id="id" class="required form-control id" type="text" name="federal-id-or-ssn-number" placeholder="Federal ID or Social Security Number"/>          
+  </div>
+
+  <div class="input-group mb-3 shrink">
+    <span class="input-group-text flag"><i alt="flag icon" class="fa-solid fa-flag"></i></span>
+    <label class="input-group-text" for="supp-cat" hidden>Options</label>
+    <select name="supplier-category" class="required form-select supp-cat gray" id="supp-cat">
+      <option selected>Choose Supplier Category...</option>
+      <option value="United States Entity">United States Entity</option>
+      <option value="Foreign Entity">Foreign Entity</option>
+    </select>
+  </div>
+
+  <div class="company-web-group input-group mb-4 shrink">
+    <span class="input-group-text globe"><i alt="globe icon" class="fa-solid fa-globe"></i></span>
+    <label for="web" hidden>Website / Internet Address</label>
+    <input maxlength="100" id="web" class="form-control web" name="website" type="text" placeholder="Website / Internet Address"/>          
+  </div> 
+
+  <div class="input-group mb-4 shrink">
+    <span class="input-group-text stamp"><i alt="stamp icon" class="fa-solid fa-stamp"></i></span>
+    <label class="input-group-text" for="div-cert" hidden>Diversity Certification</label>
+    <select name="diversity-certification" class="required form-select div-cert gray" id="div-cert">
+      <option selected>Choose Diversity Certification...</option>
+      <option value="Not Certified">Not Certified</option>
+      <option value="City of Indianapolis">City of Indianapolis</option>
+      <option value="State of Indiana">State of Indiana</option>
+      <option value="NMSDC">NMSDC</option>
+      <option value="WBENC">WBENC</option>
+      <option value="Veteran's Administration">Veteran's Administration</option>
+      <option class="other" value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="other-div-group input-group mb-4 hidden shrink">
+    <span class="input-group-text stamp"><i alt="stamp icon" class="fa-solid fa-stamp"></i></span>
+    <label for="other-div-cert" hidden>Please describe the other type of diversity certification.</label>
+    <input maxlength="50" id="other-div-cert" class="form-control other-div-cert" type="text" name="other-description-of-diversity-certification" placeholder="Please describe the other type of diversity certification."/>          
+  </div> 
+
+  <div class="description-group input-group mb-4 shrink">
+    <span class="briefcase input-group-text"><i alt="briefcase icon" class="fa-solid fa-briefcase"></i></span>
+    <label for="company-desc" hidden>Description of Goods and Services</label>
+    <input maxlength="30" class="required form-control name description" name="description-goods-services" id="company-desc" type="text" placeholder="Description of Goods and Services..."/>          
+  </div>
+
+  <div class="company-address-group input-group mb-1">
+    <span class="address input-group-text"><i alt="location icon" class="fa-solid fa-location-dot"></i></span>
+    <label for="company-address" hidden>Street Address</label>
+    <input maxlength="30" class="required form-control address" id="company-address" name="address" type="text" placeholder="Street Address"/>
+    <label for="company-address2" hidden>Address Line 2 (No PO Box)</label>
+    <input maxlength="30" class="form-control address2" id="company-address2" name="address-line-2" type="text" placeholder="Address Line 2 (No PO Box)"/>
+    <label for="company-city" hidden>City</label>
+    <input maxlength="20" class="required form-control city" id="company-city" name="city" type="text" placeholder="City"/>
+  </div>
+
+  <div class="company-address-group input-group mb-4">
+    <span class="address input-group-text"><i alt="location arrow icon" class="fa-solid fa-location-arrow"></i></span>
+    <label for="state" hidden>State</label>
+			<select name="state/region" class="gray form-select state" id="state">
+        <option value="State">State</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option>
+        <option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option>
+        <option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option>
+        <option value="Guam">Guam</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option>
+        <option value="North Dakota">North Dakota</option><option value="Northern Marianas Islands">Northern Marianas Islands</option>
+        <option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option>
+        <option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Virgin Islands">Virgin Islands</option>
+        <option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+      </select>
+    <label for="company-postal" hidden>Postal Code</label>          
+    <input maxlength="15" class="required form-control zip" id="company-postal" name="postal-code" type="text" placeholder="Postal Code"/>
+    <label for="country" hidden>Country</label>          
+    <input maxlength="25" class="required form-control country" id="country" type="text" name="country" placeholder="Country"/>
+  </div>
+<div class="alert hidden comp-alert"></div>
