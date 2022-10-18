@@ -1,0 +1,101 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+.main {
+font-family: Arial, Helvetica, sans-serif;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+#loginForm {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+border: 0.1px solid black;
+padding: 25px;
+width: 50%;
+min-width: 45rem;
+}
+
+.create-account-container {
+display: flex;
+flex-direction: column;
+background-color:rgb(232, 244, 253);
+border-radius: 15px;
+padding: 25px;
+}
+
+.contacts-group {
+background-color: rgb(240, 238, 238);
+padding: 25px;
+border-radius: 15px;
+display: flex;
+flex-direction: column;
+}
+
+.add-contact {
+align-self: start;
+}
+
+.types-categories-group {
+background-color: rgb(222, 234, 249);
+padding: 25px;
+border-radius: 15px;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+}
+
+.types {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 15px;
+background-color: white;
+border-radius: 15px;
+width: 100%;
+}
+
+label {
+align-self: start;
+}
+
+.categories {
+grid-area: c;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 15px;
+background-color: white;
+border-radius: 15px;
+width: 100%;
+}
+
+.layout {
+display: flex;
+justify-content:center;
+width: 100%;
+padding: 0 10px;
+}
+
+.add-cat {
+align-self: center;
+width: 10rem;
+}
+
+input:hover {
+cursor: pointer;
+}
+
+.subscriptions {
+background-color: antiquewhite;
+ padding: 25px;
+border-radius: 15px;
+display: flex;
+flex-direction: column;
+align-items: start;
+}
