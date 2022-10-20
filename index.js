@@ -31,3 +31,36 @@ const subAlert = document.querySelector(".sub-alert");
 const table = document.querySelector(".contacts");
 const form = document.querySelector("#loginForm");
 
+
+/*=========== Password Match ==========*/
+
+password2.addEventListener("blur", e => {
+
+if (password.value !== password2.value) {
+
+insertAlert(passwordAlert, "Passwords are not the same. Please try again");
+}
+else {
+removeAlert(passwordAlert)
+}
+});
+
+    
+
+/*=========== Sign Up Date Format Change ==========*/
+date.addEventListener("focus", e => {
+e.currentTarget.type = "date";
+});
+
+date.addEventListener("blur", e => {
+e.currentTarget.type = "text";
+});
+
+/*=========== Add new input field when Supplier Category = Other ==========*/
+divCert.addEventListener("change", e => {
+if (e.currentTarget.value === "Other") {
+otherDivGroup.classList.remove("hidden");
+} else {
+    otherDivGroup.classList.add("hidden");
+}
+});
