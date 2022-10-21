@@ -32,6 +32,47 @@ const table = document.querySelector(".contacts");
 const form = document.querySelector("#loginForm");
 
 
+/*=========== Functions ==========*/
+function insertAlert(typeAlert, content) {
+    typeAlert.classList.add("alert-danger");
+    typeAlert.classList.remove("hidden");
+    typeAlert.innerHTML = content;
+
+}
+
+function removeAlert(typeAlert) {
+    typeAlert.classList.remove("alert-danger");
+    typeAlert.classList.add("hidden");
+    typeAlert.innerHTML = "";
+}
+
+function insertRow() {
+
+    inputRows.insertAdjacentHTML("beforebegin", `
+        <tr class="inputted-contacts">
+    <td class="expand" contenteditable="false">${firstName.value}</td>
+    <td class="expand" contenteditable="false">${lastName.value}</td>
+    <td  class="expand"contenteditable="false">${contactEmail.value}</td>
+    <td class="expand" contenteditable="false">${contactNumber.value}</td>
+    <td class="hidden expand"><button type="button" 
+    style="--bs-btn-padding-y: .05rem; --bs-btn-padding-x: .4rem;"
+    class="save-cont btn btn-success btn-sm" onclick="saveRow(this)">
+    <span><i alt="floppy disk icon" class="fa-solid fa-floppy-disk"></i></span> Save</button></td>
+    <td class="expand"><button type="button" 
+    style="--bs-btn-padding-y: .0rem; --bs-btn-padding-x: .4rem;"
+    class="edit-cont btn btn-warning btn-sm" onclick="editRow(this)">
+    <span><i alt="pencil icon" class="fa-solid fa-pencil"></i></span> Edit</button></td>
+    <td class="expand"><button type="button" 
+    style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: .8rem;"
+    class="del-cont btn btn-danger btn-sm" onclick="deleteRow(this)"><span>
+    <i alt="trash icon" class="fa-solid fa-trash fa-lg"></i></span></button>
+    
+    </td>
+  </tr>
+        `)
+        }
+
+
 /*=========== Password Match ==========*/
 
 password2.addEventListener("blur", e => {
@@ -64,3 +105,28 @@ otherDivGroup.classList.remove("hidden");
     otherDivGroup.classList.add("hidden");
 }
 });
+
+/*=================== Add Row into contacts with edit, save, and delete buttons =====================*/
+
+addContactBtn.addEventListener("click", () => {
+    
+    if (firstName.value === "" || lastName.value === "" || contactEmail.value === "" || contactNumber.value === "") {
+        insertAlert(contactAlert, "Please fill all required fields to add a contact");
+    }
+
+    if (contactEmail.value !== "" && !contactEmail.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        insertAlert(contactAlert, "Please enter a valid email address");
+    }
+
+    if (firstName.value !== "" && lastName.value !== "" && contactEmail.value !== "" && contactNumber.value !== "" && contactEmail.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        removeAlert(contactAlert);
+
+        insertRow();
+        
+        firstName.value = "";
+        lastName.value = "";
+        contactEmail.value = "";
+        contactNumber.value = "";
+    }
+});
+
