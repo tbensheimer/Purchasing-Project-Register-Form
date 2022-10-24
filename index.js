@@ -130,3 +130,57 @@ addContactBtn.addEventListener("click", () => {
     }
 });
 
+/*=================== Select/Show Types and Categories =====================*/
+
+const data = JSON.parse(typeCatData);
+const unique = [... new Map(data.map((d) => [d.type, d])).values()]; //unique array of types code that works for array of objects
+let uniqueTypes = [];
+unique.forEach(object => {
+    uniqueTypes.push(object.type)
+    });
+    try {
+        uniqueTypes.forEach(type => {
+            let typeFilter = type.toLowerCase().replaceAll(' ', '-').replaceAll(',', '').replaceAll('&', 'and').replaceAll('/', '-');
+       
+            typeData.insertAdjacentHTML("beforeend", `
+            <li class="typeLi"><label id="key" for="${typeFilter}">
+            <input data-type="${typeFilter}" class="form-check-input type-check" id="${typeFilter}" name="type" value="${type}" type="checkbox" /> ${type}
+            </label>
+            <br /></li>
+            `)
+        });
+    }
+        catch {
+            typeData.insertAdjacentHTML("beforeend", `
+        <div class="alert alert-danger"><strong>Error:</strong> Data could not be retrieved. Please try again</div>
+        `)
+        }
+
+        try {
+        const checkboxes = document.querySelectorAll(".type-check");
+        checkboxes.forEach(box => {
+        box.addEventListener("change", e => {
+       data.forEach(object => {
+        let objectFilter = object.type.toLowerCase().replaceAll(' ', '-').replaceAll(',', '').replaceAll('&', 'and').replaceAll('/', '-');
+        if (e.target.checked && objectFilter === e.target.dataset.type) {
+            catData.insertAdjacentHTML("beforeend", `
+            <li class="${e.target.dataset.type} catLi"><span><i alt="circle list icon" class="fa-regular fa-circle fa-2xs"></i></span> ${object.category}</li>
+            `)
+        }
+       else if (!e.target.checked && objectFilter === e.target.dataset.type) {
+            let lis = document.querySelectorAll(`.${e.target.dataset.type}`);
+            lis.forEach(li => {
+                let parent = li.parentNode;
+                parent.removeChild(li)
+            });
+        }
+       })
+    });
+    });
+    }
+    catch {
+        catData.insertAdjacentHTML("beforeend", `
+        <div class="alert alert-danger"><strong>Error:</strong> Data could not be retrieved. Please try again</div>
+        `)
+    }
+
