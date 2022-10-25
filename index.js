@@ -184,3 +184,50 @@ unique.forEach(object => {
         `)
     }
 
+ /*=================== Search Type =====================*/
+    
+    const typeSearchInput = document.querySelector(".type-search-input");
+    const typesLi = document.getElementsByClassName("typeLi");
+
+    typeSearchInput.addEventListener("keyup", (event) => {
+        const { value } = event.target;
+        const searchQuery = value.toLowerCase();
+
+        for (const typeCheckbox of typesLi) {
+            let type = typeCheckbox.textContent.toLowerCase();
+
+            if (type.includes(searchQuery)) {
+                typeCheckbox.classList.remove("hidden")
+            }
+            else {
+                typeCheckbox.classList.add("hidden")
+            };
+            if (searchQuery === "" && !type.includes(searchQuery)) {
+                typeCheckbox.classList.remove("hidden");    
+            }
+            }
+        });
+
+
+                     /*=================== Search Category =====================*/
+            const catSearchInput = document.querySelector("#search-cat");
+            const catsLi = document.getElementsByClassName("catLi");
+
+            catSearchInput.addEventListener("keyup", (event) => {
+                const { value } = event.target;
+                const searchQuery = value.toLowerCase();
+        
+                for (const catCheckbox of catsLi) {
+                    let category = catCheckbox.textContent.toLowerCase();
+        
+                    if (category.includes(searchQuery)) {
+                        catCheckbox.classList.remove("hidden");
+        
+                    } else {
+                        catCheckbox.classList.add("hidden");
+                    }
+                    if (searchQuery === "" && !category.includes(searchQuery)) {
+                        catCheckbox.classList.remove("hidden");
+                    }
+                };
+            })
