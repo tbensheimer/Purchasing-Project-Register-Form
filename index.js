@@ -231,3 +231,28 @@ unique.forEach(object => {
                     }
                 };
             })
+
+
+const addCategoryBtn = document.querySelector(".add-cat");
+    const subscribedList = document.querySelector(".sub-list");
+    let array = [];
+
+    addCategoryBtn.addEventListener("click", () => {
+        const checkboxes = document.querySelectorAll(".type-check");
+        checkboxes.forEach(box => {
+
+            if (box.checked && !array.includes(box.value)) {
+                array.push(box.value)
+               
+                subscribedList.insertAdjacentHTML("beforeend", `
+                <li class="${box.value} sub-del-btn">${box.value}<button id="deltbn" type="button" class="del-cat btn btn-danger btn-sm"><span><i alt="trash icon" class="fa-solid fa-trash"></i></span></button></li>
+                `)
+                removeAlert(subAlert);
+            }
+        });
+    });
+
+    document.getElementById('wrapper').addEventListener("click", event => deleteType(event)); 
+    // This code wraps all the delete buttons inside the subscribe list  = allows deleteType function to be fast/no delay for each button click;   Wrapper id onto parent class;
+
+
