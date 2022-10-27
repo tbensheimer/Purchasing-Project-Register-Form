@@ -255,4 +255,68 @@ const addCategoryBtn = document.querySelector(".add-cat");
     document.getElementById('wrapper').addEventListener("click", event => deleteType(event)); 
     // This code wraps all the delete buttons inside the subscribe list  = allows deleteType function to be fast/no delay for each button click;   Wrapper id onto parent class;
 
+/*=================== Form =====================*/
+form.addEventListener("submit", e => {
+e.preventDefault();
+
+/*=================== Variables =====================*/
+
+let tableRows = table.rows.length;
+
+/*=================== Company Info =====================*/
+
+companyInfoInputs.forEach(input => {
+
+if (divCert.value === "Other") {
+
+if (otherDivCert.value === "" || 
+input.value === "" ||
+input.value === null ||
+input.value === undefined ||
+supplier.value === "Choose Supplier Category..." ||
+state.value === "State") {
+insertAlert(compAlert, "Please fill all required company fields above");
+}
+} else if (divCert.value !== "Other") {
+
+    if (input.value === "" ||
+input.value === null ||
+input.value === undefined ||
+supplier.value === "Choose Supplier Category..." ||
+divCert.value === "Choose Diversity Certification..." ||
+state.value === "State") {
+insertAlert(compAlert, "Please fill all required company fields above");
+}
+
+if (email.value !== "" && !email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+insertAlert(compAlert, "Please enter a valid email address");
+}
+}
+
+
+if (divCert.value === "Other") {
+
+    if (otherDivCert.value !== "" && 
+    input.value !== "" &&
+    input.value !== null &&
+    input.value !== undefined &&
+    supplier.value !== "Choose Supplier Category..." &&
+    state.value !== "State" &&
+    email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+    removeAlert(compAlert);
+    }
+    } else if (divCert.value !== "Other") {
+    
+        if (input.value !== "" &&
+    input.value !== null &&
+    input.value !== undefined &&
+    supplier.value !== "Choose Supplier Category..." &&
+    divCert.value !== "Choose Diversity Certification..." &&
+    state.value !== "State" &&
+    email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+    removeAlert(compAlert);
+    }
+    }
+});
+
 
