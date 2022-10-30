@@ -319,4 +319,25 @@ if (divCert.value === "Other") {
     }
 });
 
+/*============== Company Contacts Form ==============*/
+
+if (tableRows <= 2) {
+    insertAlert(contactAlert, "Please add a contact")
+} else {
+    removeAlert(contactAlert);
+}
+
+
+/*=================== Subscribed To =====================*/
+
+if (array.length == 0 || array == null) {
+
+insertAlert(subAlert, "Please add a Type to subscribe too");
+} else {
+    removeAlert(subAlert)
+}
+
+/*=================== End of Form =====================*/
+});
+
 
