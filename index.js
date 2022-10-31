@@ -1,23 +1,10 @@
 import {typeCatData} from "./JSON.js";
 
-const companyInfoInputs = document.querySelectorAll(".required");
 const password = document.querySelector(".password");
 const password2 = document.querySelector(".password2");
 const passwordAlert = document.querySelector(".password-alert");
-const date = document.querySelector(".signup");
-const name = document.querySelector(".name");
-const id = document.querySelector(".id");
-const supplier = document.querySelector(".supp-cat");
-const web = document.querySelector(".web");
 const divCert = document.querySelector(".div-cert");
 const otherDivGroup = document.querySelector(".other-div-group");
-const otherDivCert= document.querySelector(".other-div-cert");
-const address = document.querySelector(".address");
-const addressTwo = document.querySelector(".address2");
-const city = document.querySelector(".city");
-const state = document.querySelector(".state");
-const zip = document.querySelector(".zip");
-const compAlert = document.querySelector(".comp-alert");
 const firstName = document.querySelector(".first");
 const lastName = document.querySelector(".last");
 const contactEmail = document.querySelector(".contact-email");
@@ -27,9 +14,7 @@ const contactAlert = document.querySelector(".cont-alert");
 const inputRows = document.querySelector(".input-rows");
 const typeData = document.querySelector(".type-data");
 const catData = document.querySelector(".cat-data");
-const subAlert = document.querySelector(".sub-alert");
-const table = document.querySelector(".contacts");
-const form = document.querySelector("#loginForm");
+
 
 
 /*=========== Functions ==========*/
@@ -46,6 +31,7 @@ function removeAlert(typeAlert) {
     typeAlert.innerHTML = "";
 }
 
+
 function insertRow() {
 
     inputRows.insertAdjacentHTML("beforebegin", `
@@ -57,11 +43,11 @@ function insertRow() {
     <td class="hidden expand"><button type="button" 
     style="--bs-btn-padding-y: .05rem; --bs-btn-padding-x: .4rem;"
     class="save-cont btn btn-success btn-sm" onclick="saveRow(this)">
-    <span><i alt="floppy disk icon" class="fa-solid fa-floppy-disk"></i></span> Save</button></td>
+    Save</button></td>
     <td class="expand"><button type="button" 
     style="--bs-btn-padding-y: .0rem; --bs-btn-padding-x: .4rem;"
     class="edit-cont btn btn-warning btn-sm" onclick="editRow(this)">
-    <span><i alt="pencil icon" class="fa-solid fa-pencil"></i></span> Edit</button></td>
+    <span><i alt="pencil icon" class="fa-solid fa-pencil"></i></span></button></td>
     <td class="expand"><button type="button" 
     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: .8rem;"
     class="del-cont btn btn-danger btn-sm" onclick="deleteRow(this)"><span>
@@ -71,6 +57,19 @@ function insertRow() {
   </tr>
         `)
         }
+
+
+window.setMobileTable = function(selector) {
+    // if (window.innerWidth > 600) return false;
+    const tableEl = document.querySelector("#table");
+    const thEls = tableEl.querySelectorAll('#table th');
+    const tdLabels = Array.from(thEls).map(el => el.innerText);
+    tableEl.querySelectorAll('#table tr').forEach( tr => {
+      Array.from(tr.children).forEach( 
+        (td, ndx) =>  td.setAttribute('label', tdLabels[ndx])
+      );
+    });
+  }
 
 
 /*=========== Password Match ==========*/
@@ -86,16 +85,6 @@ removeAlert(passwordAlert)
 }
 });
 
-    
-
-/*=========== Sign Up Date Format Change ==========*/
-date.addEventListener("focus", e => {
-e.currentTarget.type = "date";
-});
-
-date.addEventListener("blur", e => {
-e.currentTarget.type = "text";
-});
 
 /*=========== Add new input field when Supplier Category = Other ==========*/
 divCert.addEventListener("change", e => {
@@ -106,7 +95,10 @@ otherDivGroup.classList.remove("hidden");
 }
 });
 
+
 /*=================== Add Row into contacts with edit, save, and delete buttons =====================*/
+
+
 
 addContactBtn.addEventListener("click", () => {
     
@@ -129,6 +121,8 @@ addContactBtn.addEventListener("click", () => {
         contactNumber.value = "";
     }
 });
+
+
 
 /*=================== Select/Show Types and Categories =====================*/
 
@@ -164,7 +158,10 @@ unique.forEach(object => {
         let objectFilter = object.type.toLowerCase().replaceAll(' ', '-').replaceAll(',', '').replaceAll('&', 'and').replaceAll('/', '-');
         if (e.target.checked && objectFilter === e.target.dataset.type) {
             catData.insertAdjacentHTML("beforeend", `
-            <li class="${e.target.dataset.type} catLi"><span><i alt="circle list icon" class="fa-regular fa-circle fa-2xs"></i></span> ${object.category}</li>
+            <li class="catLi ${e.target.dataset.type}"><label id="key" for="${object.category}">
+            <input class="form-check-input" id="${object.category}" name="category" value="${object.category}" type="checkbox" /> <strong>${e.target.dataset.type.toUpperCase()}:</strong> ${object.category}
+            </label>
+            <br /></li>
             `)
         }
        else if (!e.target.checked && objectFilter === e.target.dataset.type) {
@@ -184,7 +181,9 @@ unique.forEach(object => {
         `)
     }
 
- /*=================== Search Type =====================*/
+
+
+         /*=================== Search Type =====================*/
     
     const typeSearchInput = document.querySelector(".type-search-input");
     const typesLi = document.getElementsByClassName("typeLi");
@@ -231,113 +230,5 @@ unique.forEach(object => {
                     }
                 };
             })
-
-
-const addCategoryBtn = document.querySelector(".add-cat");
-    const subscribedList = document.querySelector(".sub-list");
-    let array = [];
-
-    addCategoryBtn.addEventListener("click", () => {
-        const checkboxes = document.querySelectorAll(".type-check");
-        checkboxes.forEach(box => {
-
-            if (box.checked && !array.includes(box.value)) {
-                array.push(box.value)
-               
-                subscribedList.insertAdjacentHTML("beforeend", `
-                <li class="${box.value} sub-del-btn">${box.value}<button id="deltbn" type="button" class="del-cat btn btn-danger btn-sm"><span><i alt="trash icon" class="fa-solid fa-trash"></i></span></button></li>
-                `)
-                removeAlert(subAlert);
-            }
-        });
-    });
-
-    document.getElementById('wrapper').addEventListener("click", event => deleteType(event)); 
-    // This code wraps all the delete buttons inside the subscribe list  = allows deleteType function to be fast/no delay for each button click;   Wrapper id onto parent class;
-
-/*=================== Form =====================*/
-form.addEventListener("submit", e => {
-e.preventDefault();
-
-/*=================== Variables =====================*/
-
-let tableRows = table.rows.length;
-
-/*=================== Company Info =====================*/
-
-companyInfoInputs.forEach(input => {
-
-if (divCert.value === "Other") {
-
-if (otherDivCert.value === "" || 
-input.value === "" ||
-input.value === null ||
-input.value === undefined ||
-supplier.value === "Choose Supplier Category..." ||
-state.value === "State") {
-insertAlert(compAlert, "Please fill all required company fields above");
-}
-} else if (divCert.value !== "Other") {
-
-    if (input.value === "" ||
-input.value === null ||
-input.value === undefined ||
-supplier.value === "Choose Supplier Category..." ||
-divCert.value === "Choose Diversity Certification..." ||
-state.value === "State") {
-insertAlert(compAlert, "Please fill all required company fields above");
-}
-
-if (email.value !== "" && !email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-insertAlert(compAlert, "Please enter a valid email address");
-}
-}
-
-
-if (divCert.value === "Other") {
-
-    if (otherDivCert.value !== "" && 
-    input.value !== "" &&
-    input.value !== null &&
-    input.value !== undefined &&
-    supplier.value !== "Choose Supplier Category..." &&
-    state.value !== "State" &&
-    email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-    removeAlert(compAlert);
-    }
-    } else if (divCert.value !== "Other") {
-    
-        if (input.value !== "" &&
-    input.value !== null &&
-    input.value !== undefined &&
-    supplier.value !== "Choose Supplier Category..." &&
-    divCert.value !== "Choose Diversity Certification..." &&
-    state.value !== "State" &&
-    email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-    removeAlert(compAlert);
-    }
-    }
-});
-
-/*============== Company Contacts Form ==============*/
-
-if (tableRows <= 2) {
-    insertAlert(contactAlert, "Please add a contact")
-} else {
-    removeAlert(contactAlert);
-}
-
-
-/*=================== Subscribed To =====================*/
-
-if (array.length == 0 || array == null) {
-
-insertAlert(subAlert, "Please add a Type to subscribe too");
-} else {
-    removeAlert(subAlert)
-}
-
-/*=================== End of Form =====================*/
-});
 
 
