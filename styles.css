@@ -37,6 +37,8 @@ display: flex;
 flex-direction: column;
 }
 
+
+
 .add-contact {
 align-self: start;
 }
@@ -75,6 +77,8 @@ border-radius: 15px;
 width: 100%;
 }
 
+
+
 .layout {
 display: flex;
 justify-content:center;
@@ -100,6 +104,13 @@ flex-direction: column;
 align-items: start;
 }
 
+.company-address-group #state {
+    margin: 10px 0;
+height: 38px !important;
+}
+
+
+
 .sub-list {
 list-style-type: disc;
 display: grid;
@@ -110,6 +121,11 @@ grid-gap: 10px;
 #wrapper {
 width: 100%;
 }
+
+span.address i {
+    height: 5px !important;
+    }
+    
 
 .sub-list li {
 width: 100%;
@@ -123,6 +139,13 @@ background-color: rgb(240, 238, 238);
 border: solid black 1px;
 font-size: 1.2rem;
 border-radius: 5px;
+}
+
+ul, input {
+    margin: 0 0 0 !important;
+    margin-left: 0 !important;
+    margin: 0 !important;
+padding-left: 0 !important;
 }
 
 .sub-list li:hover {
@@ -164,7 +187,15 @@ padding: 2px;
 }
 
 .gray {
-color: rgb(112, 112, 112);
+color: rgb(176, 175, 175) !important;
+}
+
+.company-address-group input {
+margin: 10px 0 !important;
+}
+
+input {
+padding-left: 5px !important;
 }
 
 .shrink {
@@ -201,6 +232,17 @@ padding: 1px 0px;
     overflow-x: auto;
 }
 
+@media (min-width: 1199px) {
+.cat-data, .type-data {
+width: 100% !important;
+}
+
+.col-xl-6 {
+    width: 75%;
+    max-width: 150rem;
+    }
+}
+
 @media (max-width: 750px) {
 
     #loginForm {
@@ -218,6 +260,11 @@ flex-direction: column;
 align-items: center;
 width: 100%;
 }
+
+.company-address-group input, .company-address-group select {
+border-radius: 6px !important;
+}
+
 
 .company-address-group .form-control, .company-address-group .form-select {
 width: 100%;
@@ -321,7 +368,9 @@ td:nth-of-type(4):before { content: "Phone Number";
     }
 
     .typeLi, .catLi {
-        margin-left: -30px;
+        margin-left: 0px;
     }
+
+}
 
 }
